@@ -1,0 +1,30 @@
+# On suit les liens symboliques 
+Options +FollowSymlinks 
+# Activation du mod rewrite d'Apache 
+RewriteEngine On
+# Réécriture de index.html vers index.php 
+RewriteRule ^index\.html$ /index.php [L]
+# Réécriture des URL des articles 
+
+RewriteRule ^test$ /inventaire/espace-membre/administrateur/inventairemodif.php [L]
+RewriteRule ^connexion$ /inventaire/espace-membre/index.php [L]
+RewriteRule ^admin$ /inventaire/espace-membre/administrateur/index.php [L]
+
+
+RewriteRule ^admin/inventaire$ /inventaire/espace-membre/administrateur/inventaire.php [L]
+RewriteRule ^admin/ligne-([0-9]*)$ /inventaire/espace-membre/administrateur/lignemodif.php?ean=$1 [L]
+RewriteRule ^admin/ajoutbien$ /inventaire/espace-membre/administrateur/inventairemodif.php [L]
+RewriteRule ^admin/export$ /inventaire/espace-membre/administrateur/export.php [L]
+RewriteRule ^admin/info$ /inventaire/espace-membre/administrateur/info.php [L]
+RewriteRule ^admin/deconnexion$ /inventaire/espace-membre/deconnexion.php [L]
+
+
+RewriteRule ^admin/insertion$ /inventaire/espace-membre/administrateur/insertion.php [L]
+RewriteRule ^admin/supligne-([0-9]*)$ /inventaire/espace-membre/administrateur/lignedel.php?ean=$1 [L]
+RewriteRule ^admin/sortie-([0-9]*)$ /inventaire/espace-membre/administrateur/sortie.php?loc=$1 [L]
+
+
+RewriteRule ^admin/ip$ /inventaire/espace-membre/administrateur/listeJeton.php [L]
+
+RewriteRule ^resultats/[a-zA-Z0-9-]*$ /inventaire/result.php?search=$1 [L]
+RewriteRule ^resultats*$ /inventaire/result.php [L]

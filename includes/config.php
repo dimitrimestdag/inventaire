@@ -13,5 +13,5 @@ $PARAM_hote_AD = "ldap.ankama.lan";
 $PARAM_port_AD = "389";
 $PARAM_racine_AD = "o=ankama, c=lan";
 $PARAM_rootdn_AD = "cn=dmestdag, o=ankama c=lan";
-$PARAM_rootpw_AD = "NetneT9,zs(n,n,n)";
+$PARAM_rootpw_AD = "";
 ?>

@@ -79,7 +79,7 @@ if(isset($_GET['search'])) {
             
                 echo "<td class='column6'>".$donnees["localisation"]."</td>\n";
                 if ($_SESSION['id'] == 2 || $_SESSION['id'] == 3) {
-        			echo "<td class='column7'><a href='".BASESITE."espace-membre/administrateur/sortie.php?loc=".$donnees["localisation"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer touts les biens de cette personne ?')\"><img src='".BASESITE."images/sortie-user.png' height='35' width='35'></a>";
+        			echo "<td class='column7'><a href='".BASESITE."admin/sortie-".$donnees["localisation"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer touts les biens de cette personne ?')\"><img src='".BASESITE."images/sortie-user.png' height='35' width='35'></a>";
                 }
            
             echo "</tr>";

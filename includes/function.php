@@ -86,7 +86,7 @@ class Connexion {
 		$_SESSION = array();
 		session_destroy();
 		if(!empty($redirection)) {
-			redirection(URLSITE.'/'.$redirection);
+			redirection(BASESITE.$redirection);
 		}
 	}
 	// fonction de connexion des membres
@@ -101,7 +101,7 @@ class Connexion {
 	// 		Si login existe pas => retourne faux
 	// Si le captcha est faux => retourne faux
 	public static function connexionCreate() {
-		if(/*Captcha::captchaVerif() AND*/ !empty($_POST['login']) AND !empty($_POST['pass'])) {
+		if(!empty($_POST['login']) AND !empty($_POST['pass'])) {
 			if(Connexion::verifLogin($_POST['login'])) {
 				if(Connexion::verifPass($_POST['pass'], $_POST['login'])) {
 					$_SESSION['id'] = Membre::recupId($_POST['login']);
@@ -213,7 +213,7 @@ class Connexion {
 				
 				case 3 :
 				$_SESSION['niveau'] = '3';
-				$redirect = redirection(URLSITE.'/administrateur/index.php');
+				$redirect = redirection(BASESITE.'admin');
 				break;
 			}
 		}
@@ -287,8 +287,8 @@ class ProtectEspace {
 	//				Redirection vers la page d'information de bannissement
 	//			Sinon
 	//				Retourne Vrai
-	public static function administrateur($id, /*$captcha,*/ $jeton, $niveau) {
-		if(empty($id) /*OR empty($captcha)*/ OR empty($jeton)) {
+	public static function administrateur($id, $jeton, $niveau) {
+		if(empty($id) OR empty($jeton)) {
 			redirection(URLSITE.'/deconnexion.php');
 		}
 		else {
@@ -315,7 +315,7 @@ class ProtectEspace {
 		$resultat = Bdd::connectBdd()->prepare(SELECT.ALL.JETON.JETONMEMBRE);
 		$resultat -> bindParam(':id', $id, PDO::PARAM_INT, 11);
 		$resultat -> execute();
-		return '<a href="listeJeton.php">il y a '.$resultat -> rowCount().' adresse(s) ip qui se connecte(nt) &agrave; votre espace membre.</a>';
+		return '<a href="ip">il y a '.$resultat -> rowCount().' adresse(s) ip qui se connecte(nt) &agrave; votre espace membre.</a>';
 	}
 	// Liste des jeton de connexion du membre
 	public static function listeJeton($id) {

@@ -1,5 +1,5 @@
 ﻿<?php session_start();
-include('header.php');?>
+include('includes/header.php');?>
 
 <body>
 

@@ -28,7 +28,7 @@ document.getElementById('sample').disabled=false;
 		
 		echo "<tbody>\n";
 
-		echo "<form action='insertion.php' method='post' onsubmit='enableSample();'>\n";
+		echo "<form action='insertion' method='post' onsubmit='enableSample();'>\n";
 		echo "<tr>\n";
 			echo "<td class='column1'><input type='text' name='edit_ean' value='".$donnees["ean"]."' readonly='readonly' size='7'/></td>\n";
 		

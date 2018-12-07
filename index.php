@@ -22,7 +22,7 @@
 
 <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
-        <form class="card card-sm" action ="result.php" method="post">
+        <form class="card card-sm" action ="resultat" method="post">
             <div class="card-body row no-gutters align-items-center">
                
                 <!--end of col-->

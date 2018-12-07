@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
 	<title>Inventaire</title>
+	<?php include('../includes/function.php'); ?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="<?php echo BASESITE; ?>images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>vendor/animate/animate.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="../vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>vendor/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../css/util.css">
-	<link rel="stylesheet" type="text/css" href="../css/mainlogin.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>css/mainlogin.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -27,7 +28,7 @@ $connect = '../includes/config.php';
 if(!file_exists($connect)) {
 	header('Location: install/');
 }
-include('../includes/function.php');
+
 if(!empty($_POST['connect'])) {
 	if(!Connexion::connexionCreate()) {
 		echo '<center>
@@ -36,7 +37,7 @@ if(!empty($_POST['connect'])) {
 		<br />
 		<img src="'.URLSITE.'/chargement.gif" width="150" height="30" />
 		</center>';
-		redirection(URLSITE.'/index.php', $time=10);
+		redirection(BASESITE.'connexion', $time=10);
 	}
 }
 //else
@@ -46,7 +47,7 @@ if(!empty($_POST['connect'])) {
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="../images/logo_ankama.png" alt="IMG">
+					<img src="<?php echo BASESITE; ?>images/logo_ankama.png" alt="IMG">
 				</div>
 
 				<form class="login100-form validate-form" action="" method="post">
@@ -84,21 +85,21 @@ if(!empty($_POST['connect'])) {
 
 	
 <!--===============================================================================================-->	
-	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?php echo BASESITE; ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../vendor/bootstrap/js/popper.js"></script>
-	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?php echo BASESITE; ?>vendor/bootstrap/js/popper.js"></script>
+	<script src="<?php echo BASESITE; ?>vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../vendor/select2/select2.min.js"></script>
+	<script src="<?php echo BASESITE; ?>vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="../vendor/tilt/tilt.jquery.min.js"></script>
+	<script src="<?php echo BASESITE; ?>vendor/tilt/tilt.jquery.min.js"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="../js/main.js"></script>
+	<script src="<?php echo BASESITE; ?>js/main.js"></script>
 
 </body>
 </html>
