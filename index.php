@@ -42,7 +42,7 @@
 
 				</div>
 			</div>
-			<a href="espace-membre/administrateur/"><img src="<?php echo BASESITE; ?>images/login.png" class="boutonindex" title="Connexion"></a>
+			<a href="connexion"><img src="<?php echo BASESITE; ?>images/login.png" class="boutonindex" title="Connexion"></a>
 		</div>
 	</div>
 

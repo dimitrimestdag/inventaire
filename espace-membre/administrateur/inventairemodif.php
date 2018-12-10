@@ -8,6 +8,12 @@ $sql2 = 'SELECT * FROM marque ORDER BY marque ASC';
 $req_marque = $bdd->query($sql2);
 $sql3 = "SELECT DISTINCT nom, prenom, localisation from localisation ORDER BY nom ASC ";
 $req_loc = $bdd->query($sql3);	
+$sql4 = "SELECT MAX(ean) FROM biens";
+$req_max_ean = $bdd->query($sql4);	
+while ($donnees = $req_max_ean->fetch()){
+	$max_ean = str_pad($donnees['MAX(ean)']+ 1, 6, "0", STR_PAD_LEFT) ;
+}
+
 ?>	
 	
 					<table>
@@ -15,7 +21,7 @@ $req_loc = $bdd->query($sql3);
 						<tbody>
 							<form action="insertion.php" method='post'>
 								<tr>
-									<td class='column1'><input type="text" name="ean" maxlength="6" size="7"></td>
+									<td class='column1'><input type="text" name="ean" maxlength="6" size="7" <?php echo "value = '".$max_ean."'" ; ?>></td>
 									<td class='column2'><select name="localisation" style="width:160px;" >
 									<?php while ($donnees = $req_loc->fetch()) {
 										echo "<option value='".$donnees["localisation"]."'>".$donnees["nom"]." ".$donnees["prenom"]."</option>\n";
