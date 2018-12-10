@@ -16,7 +16,7 @@ define('INSERT', 'INSERT INTO ');
 define('DELETE', 'DELETE ');
 define('ALL', '*');
 // les tables
-define('MEMBRE', ' FROM Membres');
+define('MEMBRE', ' FROM membres');
 define('JETON', ' FROM Secure');
 define('ACTIVATION', ' FROM Activation');
 define('JETONMAIL', ' FROM ActivationMail');
@@ -25,7 +25,7 @@ define('SMILEY', ' FROM Smiley');
 define('ACCESPROFIL', ' FROM AccesFiches');
 define('AVATAR', ' FROM Avatar');
 // les tables sans FROM
-define('MEMBREZ', 'Membres');
+define('MEMBREZ', 'membres');
 define('JETONZ', 'Secure');
 define('ACTIVATIONZ', 'Activation');
 define('JETONMAILZ', 'ActivationMail');

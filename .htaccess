@@ -25,6 +25,7 @@ RewriteRule ^admin/sortie-([0-9]*)$ /inventaire/espace-membre/administrateur/sor
 
 
 RewriteRule ^admin/ip$ /inventaire/espace-membre/administrateur/listeJeton.php [L]
+RewriteRule ^admin/changepass$ /inventaire/espace-membre/administrateur/change_pass.php [L]
 
 RewriteRule ^resultats/[a-zA-Z0-9-]*$ /inventaire/result.php?search=$1 [L]
 RewriteRule ^resultats*$ /inventaire/result.php [L]

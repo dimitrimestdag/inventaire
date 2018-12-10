@@ -9,7 +9,7 @@
 				echo "<a href='".BASESITE."admin/info'><img src='".BASESITE."images/infouser.png' class='boutonindex4' title='Infos Users' ></a>\n";
 				echo "<a href='".BASESITE."admin/deconnexion'><img src='".BASESITE."images/deco.png' class='boutonindex5' title='Déconnexion' ></a>\n";
 				if ($_SESSION['id'] == 2) {
-					echo "<a href='".BASESITE."espace-membre/administrateur/change_pass.php'><img src='".BASESITE."images/password.png' class='boutonindex6' title='change Pass' ></a>\n";
+					echo "<a href='".BASESITE."admin/changepass'><img src='".BASESITE."images/password.png' class='boutonindex6' title='change Pass' ></a>\n";
 				}
 			}
 			?>

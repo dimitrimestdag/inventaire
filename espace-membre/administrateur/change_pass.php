@@ -26,8 +26,6 @@ while ($donnees = $req->fetch()) {
 	echo '<option value="'.$donnees["id"].'">'.$donnees["pseudo"].'</option>';
 }
 echo '</select></td>
-<td><input type="text" name="passActuel"></td>
-</tr>
 <tr>
 <td align="right">Votre nouveau mot de passe : </td>
 <td><input type="text" name="newPassUn"></td>
