@@ -22,7 +22,7 @@ include('includes/header.php');?>
 							}
 							if ($chainesearch <> "") { 
 								include "includes/connexion.php";
-								$requete = "SELECT * from biens WHERE ean LIKE '". $chainesearch 
+								$requete = "SELECT * from biens WHERE ean LIKE '%". $chainesearch 
 									."%' OR localisation LIKE '". $chainesearch 
 									."%' OR famille LIKE '". $chainesearch
 									."%' OR marque LIKE '". $chainesearch
@@ -65,7 +65,12 @@ include('includes/header.php');?>
 									
 									
 										echo "<td class='column8'>".$donnees["montant"]."</td>\n";
-									
+                                        if (isset($_SESSION['id'])) {
+                                            echo "<td class='column9'><a href='".BASESITE."admin/ligne-".$donnees["ean"]."'><img src='".BASESITE."images/modif.png' height='35' width='35'></a>";
+                                            if ($_SESSION['id'] == 2 || $_SESSION['id'] == 3) {
+                                                echo "<a href='".BASESITE."admin/supligne-".$donnees["ean"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer la ligne ?')\"><img src='".BASESITE."images/corbeille.png' height='35' width='35'></a>";
+                                            }
+                                        }
 									echo "</tr>";
 								}
 							}
