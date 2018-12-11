@@ -13,7 +13,7 @@ $req_out = $bdd->query($sql);
     if($req_out)
     {
       echo("La modification à été correctement effectuée") ;
-      $sql2= "INSERT INTO `log` (`id`, `date`, `commentaire`) VALUES ('".$_SESSION['id']."', NOW(), 'A supprimer les biens de ".$nom."')";
+      $sql2= "INSERT INTO `log` (`id`, `date`, `commentaire`) VALUES ('".$_SESSION['id']."', NOW(), 'A supprime les biens de ".$nom."')";
       $bdd->query($sql2);
     }
     else
