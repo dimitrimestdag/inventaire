@@ -11,13 +11,12 @@ document.getElementById('sample').disabled=false;
 	include('menu.php');
 	$ean = $_GET['ean']; 
 	$sql = 'SELECT * FROM biens WHERE ean = '.$ean;
-	$sql3 = "SELECT DISTINCT nom, prenom, localisation from localisation ORDER BY nom ASC ";
-	$sql4 = 'SELECT * FROM famille ORDER BY famille ASC';
+	$sql3 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory ORDER BY active_directory_lastname ASC ";	$sql4 = 'SELECT * FROM famille ORDER BY famille ASC';
 	$sql5 = 'SELECT * FROM marque ORDER BY marque ASC';
 	$req_marque = $bdd->query($sql5);
 	$req_famille = $bdd->query($sql4);
 	$req_user = $bdd->query($sql);	
-	$req_loc2 = $bdd->query($sql3);	
+	$req_loc2 = $bdd2->query($sql3);	
 	echo "<table>\n";
 	include "../../theader.php";
 	while ($donnees = $req_user->fetch()) {
@@ -35,7 +34,7 @@ document.getElementById('sample').disabled=false;
 			echo "<td class='column2'>";
             if ($_SESSION['id'] == 4) {
                 while ($donnees3 = $req_loc2->fetch()) {
-                    if ($donnees["localisation"] == $donnees3["localisation"]) {
+                    if ($donnees["localisation"] == $donnees3["active_directory_uid_number"]) {
                         echo "<input type='text' name='edit_localisation' size='10' value='".$donnees["localisation"]."' readonly='readonly' size='7'/></td>\n";
                     }
                 }
@@ -43,10 +42,10 @@ document.getElementById('sample').disabled=false;
 			else {
 			echo "<select name='edit_localisation' style='width:150px;'>";
 			while ($donnees3 = $req_loc2->fetch()) {
-				if ( $donnees["localisation"] == $donnees3["localisation"]){
-					echo '<option value="'.$donnees3["localisation"].'" selected >'.$donnees3["nom"].' '.$donnees3["prenom"].'</option>';
+				if ( $donnees["localisation"] == $donnees3["active_directory_uid_number"]){
+					echo '<option value="'.$donnees["localisation"].'" selected >'.$donnees3["active_directory_lastname"].' '.$donnees3["active_directory_firstname"].'</option>';
 				} else
-				echo '<option value="'.$donnees3["localisation"].'">'.$donnees3["nom"].' '.$donnees3["prenom"].'</option>';
+				echo '<option value="'.$donnees["localisation"].'">'.$donnees3["active_directory_lastname"].' '.$donnees3["active_directory_firstname"].'</option>';
 			}
 			echo "</select></td>\n";
 		}

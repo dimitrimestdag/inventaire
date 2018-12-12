@@ -6,6 +6,7 @@ include('../includes/function.php');?>
 <head>
 	<title>Inventaire</title>
 	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="<?php echo BASESITE; ?>images/icons/favicon.ico" />
@@ -39,4 +40,4 @@ include('../includes/function.php');?>
 						<thead>
 
 						</thead>
-						<tbody>';
+						<tbody>

@@ -4,8 +4,8 @@ include('../../includes/header.php');
 include "../../includes/connexion.php";
 $loc = $_GET['loc'];
 $sql = "UPDATE biens SET localisation = REPLACE(localisation, ".$loc.", 999999) WHERE localisation = ".$loc;
-$sql2 = "SELECT DISTINCT nom, prenom from localisation WHERE localisation = ".$loc;
-$req_nom = $bdd->query($sql2);	
+$sql3 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory WHERE active_directory_uid_number = ".$loc;
+$req_nom = $bdd2->query($sql2);	
 while ($donnees = $req_nom->fetch()) {
   $nom = $donnees['prenom'].' '.$donnees['nom']; 
 }

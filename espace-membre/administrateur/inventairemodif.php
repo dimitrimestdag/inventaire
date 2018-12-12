@@ -6,8 +6,8 @@ $sql = 'SELECT * FROM famille ORDER BY famille ASC';
 $req_famille = $bdd->query($sql);
 $sql2 = 'SELECT * FROM marque ORDER BY marque ASC';
 $req_marque = $bdd->query($sql2);
-$sql3 = "SELECT DISTINCT nom, prenom, localisation from localisation ORDER BY nom ASC ";
-$req_loc = $bdd->query($sql3);	
+$sql3 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory ORDER BY active_directory_lastname ASC ";
+$req_loc = $bdd2->query($sql3);	
 $sql4 = "SELECT MAX(ean) FROM biens";
 $req_max_ean = $bdd->query($sql4);	
 while ($donnees = $req_max_ean->fetch()){
@@ -24,7 +24,7 @@ while ($donnees = $req_max_ean->fetch()){
 									<td class='column1'><input type="text" name="ean" maxlength="6" size="7" <?php echo "value = '".$max_ean."'" ; ?>></td>
 									<td class='column2'><select name="localisation" style="width:160px;" >
 									<?php while ($donnees = $req_loc->fetch()) {
-										echo "<option value='".$donnees["localisation"]."'>".$donnees["nom"]." ".$donnees["prenom"]."</option>\n";
+										echo "<option value='".$donnees["active_directory_uid_number"]."'>".$donnees["active_directory_lastname"]." ".$donnees["active_directory_firstname"]."</option>\n";
 									}
 									?>	
 									</select></td>

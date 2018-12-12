@@ -29,12 +29,12 @@
 	$req_user = $bdd->query($sql);
 	while ($donnees = $req_user->fetch()) {
 		$loc = $donnees["localisation"];
-		$sql2 = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '$loc' ";
-		$req_loc = $bdd->query($sql2);	// On récupère tout le contenu de la table
+		$sql2 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname from tbl_import_active_directory  WHERE active_directory_uid_number LIKE '$loc' ";
+		$req_loc = $bdd2->query($sql2);	// On récupère tout le contenu de la table
 		$donnees2 = $req_loc->fetch();
 		echo "<tr>";
 			echo "<td class='column1'>".$donnees["ean"]."</td>\n";
-			echo "<td class='column2'><a href='".BASESITE."result.php?search=".$donnees["localisation"]."'>".$donnees["localisation"]."</a> (".$donnees2["prenom"]." ".$donnees2["nom"].")</td>\n";
+			echo "<td class='column2'><a href='".BASESITE."result.php?search=".$donnees["localisation"]."'>".$donnees["localisation"]."</a> (".$donnees2["active_directory_firstname"]." ".$donnees2["active_directory_lastname"].")</td>\n";
 			echo "<td class='column3'><a href='".BASESITE."result.php?search=".$donnees["famille"]."'>".$donnees["famille"]."</a></td>\n";
 			echo "<td class='column4'><a href='".BASESITE."result.php?search=".$donnees["marque"]."'>".$donnees["marque"]."</a></td>\n";
 			echo "<td class='column5'><a href='".BASESITE."result.php?search=".$donnees["modele"]."'>".$donnees["modele"]."</a></td>\n";

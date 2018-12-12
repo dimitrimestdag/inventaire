@@ -12,6 +12,7 @@ ProtectEspace::administrateur($_SESSION['id']/*, $_SESSION['captcha']*/, $_SESSI
 	<meta charset="UTF-8">
 	<meta name="author" content="Dimitri Mestdag" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf8" />
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="<?php echo BASESITE; ?>images/icons/favicon.ico" />
 	<!--===============================================================================================-->

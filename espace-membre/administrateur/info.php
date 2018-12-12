@@ -41,13 +41,13 @@ if(isset($_GET['search'])) {
     }
     if ($chainesearch <> "") {    
         include "../../includes/connexion.php";
-        $requete = "SELECT * from localisation WHERE nom LIKE '". $chainesearch 
-            ."%' OR prenom LIKE '". $chainesearch 
-            ."%' OR idsagecompany LIKE '". $chainesearch
-            ."%' OR idsageemployee LIKE '". $chainesearch
-            ."%' OR idsagemanager LIKE '". $chainesearch
-            ."%' OR localisation LIKE '". $chainesearch ."%'";
-        $resultat = $bdd->query($requete) or die(print_r($bdd->errorInfo()));
+        $requete = "SELECT * from tbl_import_active_directory WHERE active_directory_lastname LIKE '". $chainesearch 
+            ."%' OR active_directory_firstname LIKE '". $chainesearch 
+            ."%' OR active_directory_id_sage_compagny LIKE '". $chainesearch
+            ."%' OR active_directory_id_sage_employee LIKE '". $chainesearch
+            ."%' OR active_directory_id_sage_manager LIKE '". $chainesearch
+            ."%' OR active_directory_uid_number LIKE '". $chainesearch ."%'";
+        $resultat = $bdd2->query($requete) or die(print_r($bdd->errorInfo()));
         echo '<table>';
         echo '<thead>';
             echo '<tr class="table100-head">';
@@ -67,19 +67,19 @@ if(isset($_GET['search'])) {
             
             echo "<tr>";
             
-                echo "<td class='column1'>".$donnees["nom"]."</td>\n";
+                echo "<td class='column1'>".$donnees["active_directory_lastname"]."</td>\n";
            
-                echo "<td class='column2'>".$donnees["prenom"]."</td>\n";
+                echo "<td class='column2'>".$donnees["active_directory_firstname"]."</td>\n";
            
-                echo "<td class='column3'>".$donnees["idsagecompany"]."</td>\n";
+                echo "<td class='column3'>".$donnees["active_directory_id_sage_compagny"]."</td>\n";
            
-                echo "<td class='column4'>".$donnees["idsageemployee"]."</td>\n";
+                echo "<td class='column4'>".$donnees["active_directory_id_sage_employee"]."</td>\n";
             
-                echo "<td class='column5'>".$donnees["idsagemanager"]."</td>\n";
+                echo "<td class='column5'>".$donnees["active_directory_id_sage_manager"]."</td>\n";
             
-                echo "<td class='column6'>".$donnees["localisation"]."</td>\n";
+                echo "<td class='column6'>".$donnees["active_directory_uid_number"]."</td>\n";
                 if ($_SESSION['id'] == 2 || $_SESSION['id'] == 3) {
-        			echo "<td class='column7'><a href='".BASESITE."admin/sortie-".$donnees["localisation"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer touts les biens de cette personne ?')\"><img src='".BASESITE."images/sortie-user.png' height='35' width='35'></a>";
+        			echo "<td class='column7'><a href='".BASESITE."admin/sortie-".$donnees["active_directory_uid_number"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer touts les biens de cette personne ?')\"><img src='".BASESITE."images/sortie-user.png' height='35' width='35'></a>";
                 }
            
             echo "</tr>";
