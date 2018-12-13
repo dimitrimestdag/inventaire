@@ -22,56 +22,57 @@ include('includes/header.php');?>
 							}
 							if ($chainesearch <> "") { 
 								include "includes/connexion.php";
-								$requete = "SELECT * from biens WHERE ean LIKE '%". $chainesearch 
-									."%' OR localisation LIKE '". $chainesearch 
-									."%' OR famille LIKE '". $chainesearch
-									."%' OR marque LIKE '". $chainesearch
-									."%' OR numdeserie LIKE '". $chainesearch
-									."%' OR localisation IN (SELECT localisation FROM localisation WHERE nom LIKE '". $chainesearch
-																								."%' OR prenom LIKE '". $chainesearch
-									."%') OR modele LIKE '". $chainesearch ."%'";
-								$requete2 = "SELECT * from localisation WHERE localisation LIKE '". $chainesearch 
-									."%' OR nom LIKE '". $chainesearch
-									."%' OR prenom LIKE '". $chainesearch ."%'"; 
-								$resultat = $bdd->query($requete) or die(print_r($bdd->errorInfo()));
-								$nb_fonc = 0;
-								$sql = 'SELECT * FROM biens ORDER BY ean ASC';
-								$cmpt = 0;
-								while ($donnees = $resultat->fetch()) {
-									$sql2 = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '". $donnees["localisation"] ."'";
-									$req_loc = $bdd->query($sql2);
-									$donnees3 = $req_loc->fetch();
-									echo "<tr>";
-									if (isset($donnees["ean"]) &&  ($donnees["ean"] <> "")) {
-										echo "<td class='column1'>".$donnees["ean"]."</td>\n";
-									}						
-									if (isset($donnees["localisation"]) &&  ($donnees["localisation"] <> "")) {
-										echo "<td class='column2'><a href='result.php?search=".$donnees["localisation"]."'>".$donnees["localisation"]."</a> (".$donnees3["prenom"]." ".$donnees3["nom"].")</td>\n";
-									}
-									if (isset($donnees["famille"]) &&  ($donnees["famille"] <> "")) {
-										echo "<td class='column3'><a href='result.php?search=".$donnees["famille"]."'>".$donnees["famille"]."</a></td>\n";
-									}
-									if (isset($donnees["marque"]) &&  ($donnees["marque"] <> "")) {
-										echo "<td class='column4'><a href='result.php?search=".$donnees["marque"]."'>".$donnees["marque"]."</a></td>\n";
-									}
-									if (isset($donnees["modele"]) &&  ($donnees["modele"] <> "")) {
-										echo "<td class='column5'><a href='result.php?search=".$donnees["modele"]."'>".$donnees["modele"]."</a></td>\n";
-									}
-									if (isset($donnees["numdeserie"]) &&  ($donnees["numdeserie"] <> "")) {
-										echo "<td class='column6'>".$donnees["numdeserie"]."</td>\n";
-									}
-								
-										echo "<td class='column7'>".$donnees["numfacture"]."</td>\n";
+								$sqlad = "SELECT active_directory_uid_number FROM tbl_import_active_directory WHERE active_directory_lastname LIKE '". $chainesearch
+								."%' OR active_directory_firstname LIKE '". $chainesearch."%'";
+								$resultat2 = $bdd2->query($sqlad);
+								$i=0;
+								while ($donnees2 = $resultat2->fetch()) {
+									$tabloc = array($i => $donnees2['active_directory_uid_number']);
+									$requete = "SELECT * from biens WHERE ean LIKE '%". $chainesearch 
+																	."%' OR localisation LIKE '". $chainesearch 
+																	."%' OR famille LIKE '". $chainesearch
+																	."%' OR marque LIKE '". $chainesearch
+																	."%' OR numdeserie LIKE '". $chainesearch
+																	."%' OR localisation =".$tabloc[$i]." OR modele LIKE '". $chainesearch ."%'";
+									$i++;                                  
+									$resultat = $bdd->query($requete) or die(print_r($bdd->errorInfo()));
+
+									while ($donnees = $resultat->fetch()) {
+										$sql2 = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '". $donnees["localisation"] ."'";
+										$req_loc = $bdd->query($sql2);
+										$donnees3 = $req_loc->fetch();
+										echo "<tr>";
+										if (isset($donnees["ean"]) &&  ($donnees["ean"] <> "")) {
+											echo "<td class='column1'>".$donnees["ean"]."</td>\n";
+										}						
+										if (isset($donnees["localisation"]) &&  ($donnees["localisation"] <> "")) {
+											echo "<td class='column2'><a href='result.php?search=".$donnees["localisation"]."'>".$donnees["localisation"]."</a> (".$donnees3["prenom"]." ".$donnees3["nom"].")</td>\n";
+										}
+										if (isset($donnees["famille"]) &&  ($donnees["famille"] <> "")) {
+											echo "<td class='column3'><a href='result.php?search=".$donnees["famille"]."'>".$donnees["famille"]."</a></td>\n";
+										}
+										if (isset($donnees["marque"]) &&  ($donnees["marque"] <> "")) {
+											echo "<td class='column4'><a href='result.php?search=".$donnees["marque"]."'>".$donnees["marque"]."</a></td>\n";
+										}
+										if (isset($donnees["modele"]) &&  ($donnees["modele"] <> "")) {
+											echo "<td class='column5'><a href='result.php?search=".$donnees["modele"]."'>".$donnees["modele"]."</a></td>\n";
+										}
+										if (isset($donnees["numdeserie"]) &&  ($donnees["numdeserie"] <> "")) {
+											echo "<td class='column6'>".$donnees["numdeserie"]."</td>\n";
+										}
 									
-									
-										echo "<td class='column8'>".$donnees["montant"]."</td>\n";
-                                        if (isset($_SESSION['id'])) {
-                                            echo "<td class='column9'><a href='".BASESITE."admin/ligne-".$donnees["ean"]."'><img src='".BASESITE."images/modif.png' height='35' width='35'></a>";
-                                            if ($_SESSION['id'] == 2 || $_SESSION['id'] == 3) {
-                                                echo "<a href='".BASESITE."admin/supligne-".$donnees["ean"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer la ligne ?')\"><img src='".BASESITE."images/corbeille.png' height='35' width='35'></a>";
-                                            }
-                                        }
-									echo "</tr>";
+											echo "<td class='column7'>".$donnees["numfacture"]."</td>\n";
+										
+										
+											echo "<td class='column8'>".$donnees["montant"]."</td>\n";
+											if (isset($_SESSION['id'])) {
+												echo "<td class='column9'><a href='".BASESITE."admin/ligne-".$donnees["ean"]."'><img src='".BASESITE."images/modif.png' height='35' width='35'></a>";
+												if ($_SESSION['id'] == 2 || $_SESSION['id'] == 3) {
+													echo "<a href='".BASESITE."admin/supligne-".$donnees["ean"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer la ligne ?')\"><img src='".BASESITE."images/corbeille.png' height='35' width='35'></a>";
+												}
+											}
+										echo "</tr>";
+									}
 								}
 							}
 							?>
