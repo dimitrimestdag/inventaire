@@ -17,7 +17,7 @@
 		$BDD_hote2 = 'db-toutankama';
 		$BDD_bd2 = 'toutankama';
 		$BDD_utilisateur2 = 'dmestdag';
-		$BDD_mot_passe2 = '6TFgCJWlM1';
+		$BDD_mot_passe2 = '';
 
 	try{
 				$bdd2 = new PDO('mysql:host='.$BDD_hote2.';dbname='.$BDD_bd2, $BDD_utilisateur2, $BDD_mot_passe2, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
