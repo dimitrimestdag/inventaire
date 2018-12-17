@@ -19,7 +19,7 @@ while ($donnees = $req_max_ean->fetch()){
 					<table>
 						<?php include "../../theader.php"; ?>
 						<tbody>
-							<form action="insertion.php" method='post'>
+							<form action="insertion" method='post'>
 								<tr>
 									<td class='column1'><input type="text" name="ean" maxlength="6" size="7" <?php echo "value = '".$max_ean."'" ; ?>></td>
 									<td class='column2'><select name="localisation" style="width:160px;" >
@@ -37,14 +37,14 @@ while ($donnees = $req_max_ean->fetch()){
 									</select></td>
 									<td class='column4'><select name="marque" style="width:90px;">
 									<?php while ($donnees = $req_marque->fetch()) {
-										echo "<option value='".$donnees["marque"].">".$donnees["marque"]."</option>\n";
+										echo "<option value='".$donnees["marque"]."'>".$donnees["marque"]."</option>\n";
 									}
 									?>	
 									</select></td>
 									<td class='column5'><input type="text" name="modele" maxlength="250" size="10"></td>
 									<td class='column6'><input type="text" name="numdeserie" maxlength="15" size="15"></td>
-									<td class='column5'><input type="text" name="numfacture" maxlength="250" size="10"></td>
-									<td class='column6'><input type="text" name="montant" maxlength="10" size="6"></td>
+									<td class='column7'><input type="text" name="numfacture" maxlength="250" size="10"></td>
+									<td class='column8'><input type="text" name="montant" maxlength="10" size="6"></td>
 									<td class='column9'><button type='submit' name='btnEnvoiForm' title='Ok !'><img src='<?php echo BASESITE;?>images/ok.png' style='width:30px; height:30px' alt='' /></button></td>
 								</tr>
 							</form>
