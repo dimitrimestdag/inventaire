@@ -2,7 +2,7 @@
 <tbody>
 <?php
 	include "includes/connexion.php";
-	include "includes/barrenavigation.php";
+	//include "includes/barrenavigation.php";
 	$req_fonc = $bdd->query("SELECT DISTINCT ean from biens ORDER BY ean ASC");
 	function NombreTotal ($req_fonc){
 		$nb_total = 0;

@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('includes/header.php'); ?>
 
 <body>
 	<div class="limiter">
@@ -14,7 +14,7 @@
 						<thead>
 							<tr class="table100-head">
 								<th class="column1">
-									<?php echo barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 3); ?>
+									<?php echo barre_navigation($nb_total, $nb_affichage_par_page, $_GET['debut'], 10); ?>
 								</th>
 							</tr>
 						</thead>

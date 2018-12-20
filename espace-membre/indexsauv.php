@@ -12,7 +12,7 @@ if(!empty($_POST['connect'])) {
 		<br />
 		<img src="'.URLSITE.'/chargement.gif" width="150" height="30" />
 		</center>';
-		redirection(URLSITE.'/index.php', $time=10);
+		redirection(URLSITE.'/index.php', $time=3);
 	}
 }
 else

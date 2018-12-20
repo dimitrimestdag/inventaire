@@ -1,9 +1,11 @@
-<?php
-if (!isset($_SESSION)) {
+<?php include('function.php');
+if (!isset($_SESSION['id'])) {
     session_start();
+}else{
+	ProtectEspace::administrateur($_SESSION['id'], $_SESSION['jeton'], $_SESSION['niveau']);
 }
-include('function.php');
-ProtectEspace::administrateur($_SESSION['id']/*, $_SESSION['captcha']*/, $_SESSION['jeton'], $_SESSION['niveau']);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
