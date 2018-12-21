@@ -682,20 +682,20 @@ function barre_navigation ($nb_total,
 
 	// on recherche l'URL courante munie de ses paramètre auxquels on ajoute le paramètre 'debut' qui jouera le role du premier élément de notre LIMIT
 	if ($_SERVER['QUERY_STRING'] == "") {
-	$query = '/inventaire/admin/inventaire?debut=';
+	$query = BASESITE.'admin/inventaire?debut=';
 	}
 	else {
 	$tableau = explode ("debut=", $_SERVER['QUERY_STRING']);
 	$nb_element = count ($tableau);
 	if ($nb_element == 1) {
-		$query = '/inventaire/admin/inventaire?'.$_SERVER['QUERY_STRING'].'&debut=';
+		$query = BASESITE.'admin/inventaire?'.$_SERVER['QUERY_STRING'].'&debut=';
 	}
 	else {
 		if ($tableau[0] == "") {
-		$query = '/inventaire/admin/inventaire?debut=';
+		$query = BASESITE.'admin/inventaire?debut=';
 		}
 		else {
-		$query = '/inventaire/admin/inventaire?'.$tableau[0].'debut=';
+		$query = BASESITE.'admin/inventaire?'.$tableau[0].'debut=';
 		}
 	}
 	}
