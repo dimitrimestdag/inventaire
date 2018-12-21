@@ -1,11 +1,7 @@
 <?php include('function.php');
-if (!isset($_SESSION['id'])) {
-    session_start();
-}else{
+if (isset($_SESSION['id'])) {
 	ProtectEspace::administrateur($_SESSION['id'], $_SESSION['jeton'], $_SESSION['niveau']);
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
