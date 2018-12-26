@@ -1,8 +1,8 @@
 <?php session_start();
 include('../../includes/header.php');
 include('menu.php');
-if(!empty($_POST['supprime_connexion'])) {
-	ProtectEspace::deleteJeton($_POST['id_jeton']);
+if (!empty($_POST['supprime_connexion'])) {
+    ProtectEspace::deleteJeton($_POST['id_jeton']);
 }?>
 <div id="principal">
 <div id="titre_principal">Liste des Connexions</div>
@@ -15,5 +15,5 @@ if(!empty($_POST['supprime_connexion'])) {
 </tr>
 <?php ProtectEspace::listeJeton($_SESSION['id'])?>
 </table>
-</div>';
+</div>
 <?php include('../../includes/footer.php'); ?>

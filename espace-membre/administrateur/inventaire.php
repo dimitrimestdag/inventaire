@@ -2,11 +2,9 @@
 include('../../includes/header.php');
 include('menu.php');
 ?>	
-	
 					<table>
 						<?php include('../../theader.php');
-							include('../../tbody.php'); ?>	
-						
+                            include('../../tbody.php'); ?>	
 					</table>
 					<table>
 						<thead>
@@ -29,5 +27,4 @@ include('menu.php');
 							</form>
 						</div>
 					</div>
-	
 <?php include "../../includes/footer.php"; ?>

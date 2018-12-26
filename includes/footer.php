@@ -1,7 +1,6 @@
 				</div>
 			</div>
 			<?php 
-			//$export = shell_exec('mysqldump --opt biens > fichier_de_sauvegarde.sql');
 			if (isset($_SESSION['id'])) {
 				echo "<a href='".BASESITE."admin/inventaire'><img src='".BASESITE."images/tab.png' class='boutonindex' title='Inventaire' ></a>\n ";
 				echo "<a href='".BASESITE."admin/ajoutbien'><img src='".BASESITE."images/modifligne.png' class='boutonindex2' title='Ajout' ></a>\n";

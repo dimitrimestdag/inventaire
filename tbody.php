@@ -1,4 +1,3 @@
-
 <tbody>
 <?php
 	include "includes/connexion.php";
@@ -22,7 +21,6 @@
 		else {
 			$nb_fonc++;
 		}
-		
 	}
 	$sql = 'SELECT * FROM biens ORDER BY ean ASC LIMIT '.$_GET['debut'].','.$nb_affichage_par_page;
 	$cmpt = 0;
@@ -41,7 +39,6 @@
 			echo "<td class='column6'>".$donnees["numdeserie"]."</td>\n";
 			echo "<td class='column7'>".$donnees["numfacture"]."</td>\n";
 			echo "<td class='column8'>".$donnees["montant"]."</td>\n";
-
 		if (isset($_SESSION['id']) ) {
 			echo "<td class='column9'><a href='".BASESITE."admin/ligne-".$donnees["ean"]."'><img src='".BASESITE."images/modif.png' height='35' width='35'></a>";
             if ($_SESSION['id'] == 2 || $_SESSION['id'] == 3) {
@@ -49,12 +46,8 @@
 			}
 			echo "</td>";
 		}
-
 		echo "</tr>";
 	}
-
-	
 	$req_fonc->closeCursor(); 
-	?>
-		
+	?>	
 </tbody>

@@ -25,23 +25,20 @@
 <body>
 <?php session_start();
 $connect = '../includes/config.php';
-if(!file_exists($connect)) {
-	header('Location: install/');
+if (!file_exists($connect)) {
+    header('Location: install/');
 }
-
-if(!empty($_POST['connect'])) {
-	if(!Connexion::connexionCreate()) {
-		echo '<center>
+if (!empty($_POST['connect'])) {
+    if (!Connexion::connexionCreate()) {
+        echo '<center>
 		<br />
 		Redirection en cours ...
 		<br />
 		<img src="'.URLSITE.'/chargement.gif" width="150" height="30" />
 		</center>';
-		redirection(BASESITE.'connexion', $time=10);
-	}
+        redirection(BASESITE.'connexion', $time=10);
+    }
 }
-//else
-//	$captcha = new Captcha;
 ?>
 	<div class="limiter">
 		<div class="container-login100">

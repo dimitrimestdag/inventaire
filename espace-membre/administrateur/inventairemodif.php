@@ -7,11 +7,11 @@ $req_famille = $bdd->query($sql);
 $sql2 = 'SELECT * FROM marque ORDER BY marque ASC';
 $req_marque = $bdd->query($sql2);
 $sql3 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory ORDER BY active_directory_lastname ASC ";
-$req_loc = $bdd2->query($sql3);	
+$req_loc = $bdd2->query($sql3);
 $sql4 = "SELECT MAX(ean) FROM biens";
-$req_max_ean = $bdd->query($sql4);	
-while ($donnees = $req_max_ean->fetch()){
-	$max_ean = str_pad($donnees['MAX(ean)']+ 1, 6, "0", STR_PAD_LEFT) ;
+$req_max_ean = $bdd->query($sql4);
+while ($donnees = $req_max_ean->fetch()) {
+    $max_ean = str_pad($donnees['MAX(ean)']+ 1, 6, "0", STR_PAD_LEFT) ;
 }
 
 ?>	
@@ -24,22 +24,18 @@ while ($donnees = $req_max_ean->fetch()){
 									<td class='column1'><input type="text" name="ean" maxlength="6" size="7" <?php echo "value = '".$max_ean."'" ; ?>></td>
 									<td class='column2'><select name="localisation" style="width:160px;" >
 									<?php while ($donnees = $req_loc->fetch()) {
-										echo "<option value='".$donnees["active_directory_uid_number"]."'>".$donnees["active_directory_lastname"]." ".$donnees["active_directory_firstname"]."</option>\n";
-									}
-									?>	
+   											 echo "<option value='".$donnees["active_directory_uid_number"]."'>".$donnees["active_directory_lastname"]." ".$donnees["active_directory_firstname"]."</option>\n";
+										} ?>	
 									</select></td>
-								
 									<td class='column3'><select name="famille" style="width:100px;">
 									<?php while ($donnees = $req_famille->fetch()) {
-										echo "<option value='".$donnees["famille"]."'>".$donnees["famille"]."</option>\n";
-									}
-									?>	
+                                        echo "<option value='".$donnees["famille"]."'>".$donnees["famille"]."</option>\n";
+                                    } ?>	
 									</select></td>
 									<td class='column4'><select name="marque" style="width:90px;">
 									<?php while ($donnees = $req_marque->fetch()) {
-										echo "<option value='".$donnees["marque"]."'>".$donnees["marque"]."</option>\n";
-									}
-									?>	
+                                        echo "<option value='".$donnees["marque"]."'>".$donnees["marque"]."</option>\n";
+                                    } ?>	
 									</select></td>
 									<td class='column5'><input type="text" name="modele" maxlength="250" size="10"></td>
 									<td class='column6'><input type="text" name="numdeserie" maxlength="15" size="15"></td>
