@@ -17,13 +17,10 @@ if(!empty($_POST['changerPass'])) {
 	</td>
 	</tr>';
 }
-/* include "../../includes/debora.php";
-$ean = new Debora('1123456789012', 2);
-$ean->makeImage(); */
 echo '<tr>
 <td align="right"><select name="id">';
 include "../../includes/connexion.php";
-$sql = "SELECT DISTINCT id, pseudo from membres ORDER BY pseudo ASC ";
+$sql = SELECT."id, pseudo".MEMBRE." ORDER BY pseudo ASC ";
 $req = $bdd->query($sql);
 while ($donnees = $req->fetch()) {
 	echo '<option value="'.$donnees["id"].'">'.$donnees["pseudo"].'</option>';

@@ -4,10 +4,10 @@ include('../../includes/header.php');
 include "../../includes/connexion.php";
 $loc = $_GET['loc'];
 $sql = "UPDATE biens SET localisation = REPLACE(localisation, ".$loc.", 999999) WHERE localisation = ".$loc;
-$sql3 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory WHERE active_directory_uid_number = ".$loc;
+$sql2 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory WHERE active_directory_uid_number = ".$loc;
 $req_nom = $bdd2->query($sql2);
 while ($donnees = $req_nom->fetch()) {
-    $nom = $donnees['prenom'].' '.$donnees['nom'];
+    $nom = $donnees['active_directory_firstname'].' '.$donnees['active_directory_lastname'];
 }
 $req_out = $bdd->query($sql);
     if ($req_out) {
@@ -16,8 +16,7 @@ $req_out = $bdd->query($sql);
         $bdd->query($sql2);
     } else {
         echo("La modification à échouée") ;
-    }
-    
+    }    
 ?>
 </tbody>
 <?php include "../../includes/footer.php"; ?>
