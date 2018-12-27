@@ -1,8 +1,8 @@
 <tbody>
 <?php
 	include "includes/connexion.php";
-	//include "includes/barrenavigation.php";
-	$req_fonc = $bdd->query("SELECT DISTINCT ean from biens ORDER BY ean ASC");
+	$sql_ean_biensASC = "SELECT DISTINCT ean from biens ORDER BY ean ASC";
+	$req_fonc = $bdd->query($sql_ean_biensASC);
 	function NombreTotal ($req_fonc){
 		$nb_total = 0;
 		while ($fonc[$nb_total] = $req_fonc->fetch()) {
@@ -22,13 +22,15 @@
 			$nb_fonc++;
 		}
 	}
-	$sql = 'SELECT * FROM biens ORDER BY ean ASC LIMIT '.$_GET['debut'].','.$nb_affichage_par_page;
 	$cmpt = 0;
-	$req_user = $bdd->query($sql);
+	$sql_biensASC = 'SELECT * FROM biens ORDER BY ean ASC LIMIT '.$_GET['debut'].','.$nb_affichage_par_page;
+
+	$req_user = $bdd->query($sql_biensASC);
 	while ($donnees = $req_user->fetch()) {
 		$loc = $donnees["localisation"];
-		$sql2 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname from tbl_import_active_directory  WHERE active_directory_uid_number LIKE '$loc' ";
-		$req_loc = $bdd2->query($sql2);	// On récupère tout le contenu de la table
+		$sql_ad_nomprenom = "SELECT DISTINCT active_directory_lastname, active_directory_firstname from tbl_import_active_directory  WHERE active_directory_uid_number LIKE '$loc' ";
+
+		$req_loc = $bdd2->query($sql_ad_nomprenom);	// On récupère tout le contenu de la table
 		$donnees2 = $req_loc->fetch();
 		echo "<tr>";
 			echo "<td class='column1'>".$donnees["ean"]."</td>\n";

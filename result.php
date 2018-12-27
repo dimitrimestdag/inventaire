@@ -15,30 +15,31 @@ include('includes/header.php');
                                 $chainesearch = "";
                             }
                             if ($chainesearch <> "") {
-                                $sqlad = "SELECT active_directory_uid_number FROM tbl_import_active_directory WHERE active_directory_lastname LIKE '". $chainesearch
+                                $sql_ad_search_uid = "SELECT active_directory_uid_number FROM tbl_import_active_directory WHERE active_directory_lastname LIKE '". $chainesearch
                                 ."%' OR active_directory_firstname LIKE '". $chainesearch."%'";
-                                $resultat2 = $bdd2->query($sqlad);
+
+                                $resultat2 = $bdd2->query($sql_ad_search_uid);
                                 $i=0;
-                                $requete = "SELECT * from biens WHERE ean LIKE '%". $chainesearch
-                                                                    ."%' OR localisation LIKE '". $chainesearch
-                                                                    ."%' OR famille LIKE '". $chainesearch
-                                                                    ."%' OR marque LIKE '". $chainesearch
-                                                                    ."%' OR numdeserie LIKE '". $chainesearch
-                                                                    ."%' OR localisation ='".$chainesearch."' OR modele LIKE '". $chainesearch ."%'";
-                                $resultat = $bdd->query($requete) or die(print_r($bdd->errorInfo()));
+                                $sql_search_biens = "SELECT * from biens WHERE ean LIKE '%". $chainesearch
+                                ."%' OR localisation LIKE '". $chainesearch
+                                ."%' OR famille LIKE '". $chainesearch
+                                ."%' OR marque LIKE '". $chainesearch
+                                ."%' OR numdeserie LIKE '". $chainesearch
+                                ."%' OR localisation ='".$chainesearch."' OR modele LIKE '". $chainesearch ."%'";
+                                $resultat = $bdd->query($sql_search_biens) or die(print_r($bdd->errorInfo()));
                                 while ($donnees2 = $resultat2->fetch()) {
                                     $tabloc = array($i => $donnees2['active_directory_uid_number']);
-                                    $requete = "SELECT * from biens WHERE ean LIKE '%". $chainesearch
+                                    $sql_search_biensi = "SELECT * from biens WHERE ean LIKE '%". $chainesearch
                                                                     ."%' OR localisation LIKE '". $chainesearch
                                                                     ."%' OR famille LIKE '". $chainesearch
                                                                     ."%' OR marque LIKE '". $chainesearch
                                                                     ."%' OR numdeserie LIKE '". $chainesearch
                                                                     ."%' OR localisation =".$tabloc[$i]." OR modele LIKE '". $chainesearch ."%'";
                                     $i++;
-                                    $resultat = $bdd->query($requete) or die(print_r($bdd->errorInfo()));
+                                    $resultat = $bdd->query($sql_search_biensi) or die(print_r($bdd->errorInfo()));
                                     while ($donnees = $resultat->fetch()) {
-                                        $sql2 = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '". $donnees["localisation"] ."'";
-                                        $req_loc = $bdd->query($sql2);
+                                        $sql_localisation = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '". $donnees["localisation"] ."'";
+                                        $req_loc = $bdd->query($sql_localisation);
                                         $donnees3 = $req_loc->fetch();
                                         echo "<tr>";
                                         echo "<td class='column1'>".$donnees["ean"]."</td>\n";
@@ -60,8 +61,8 @@ include('includes/header.php');
                                     }
                                 }
                                 while ($donnees = $resultat->fetch()) {
-                                    $sql2 = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '". $donnees["localisation"] ."'";
-                                    $req_loc = $bdd->query($sql2);
+                                    $sql_localisation = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '". $donnees["localisation"] ."'";
+                                    $req_loc = $bdd->query($sql_localisation);
                                     $donnees3 = $req_loc->fetch();
                                     echo "<tr>";
                                     echo "<td class='column1'>".$donnees["ean"]."</td>\n";

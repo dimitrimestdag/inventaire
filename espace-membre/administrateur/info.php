@@ -41,13 +41,13 @@ if (isset($_GET['search'])) {
 }
     if ($chainesearch <> "") {
         include "../../includes/connexion.php";
-        $requete = "SELECT * from tbl_import_active_directory WHERE active_directory_lastname LIKE '". $chainesearch
+        $sql_searchAD = "SELECT * from tbl_import_active_directory WHERE active_directory_lastname LIKE '". $chainesearch
             ."%' OR active_directory_firstname LIKE '". $chainesearch
             ."%' OR active_directory_id_sage_compagny LIKE '". $chainesearch
             ."%' OR active_directory_id_sage_employee LIKE '". $chainesearch
             ."%' OR active_directory_id_sage_manager LIKE '". $chainesearch
             ."%' OR active_directory_uid_number LIKE '". $chainesearch ."%'";
-        $resultat = $bdd2->query($requete) or die(print_r($bdd->errorInfo()));
+        $resultat = $bdd2->query($sql_searchAD) or die(print_r($bdd->errorInfo()));
         echo '<table>';
         echo '<thead>';
         echo '<tr class="table100-head">';

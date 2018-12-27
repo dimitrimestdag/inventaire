@@ -2,20 +2,19 @@
 include('../../includes/header.php');
 include('menu.php');
 include "../../includes/connexion.php";
-$sql = 'SELECT * FROM famille ORDER BY famille ASC';
-$req_famille = $bdd->query($sql);
-$sql2 = 'SELECT * FROM marque ORDER BY marque ASC';
-$req_marque = $bdd->query($sql2);
-$sql3 = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory ORDER BY active_directory_lastname ASC ";
-$req_loc = $bdd2->query($sql3);
-$sql4 = "SELECT MAX(ean) FROM biens";
-$req_max_ean = $bdd->query($sql4);
+$sql_familleASC = 'SELECT * FROM famille ORDER BY famille ASC';
+$sql_marqueASC = 'SELECT * FROM marque ORDER BY marque ASC';
+$sql_adASC = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory ORDER BY active_directory_lastname ASC ";
+$sql_MAXean = "SELECT MAX(ean) FROM biens";
+
+$req_famille = $bdd->query($sql_familleASC);
+$req_marque = $bdd->query($sql_marqueASC);
+$req_loc = $bdd2->query($sql_adASC);
+$req_max_ean = $bdd->query($sql_MAXean);
 while ($donnees = $req_max_ean->fetch()) {
     $max_ean = str_pad($donnees['MAX(ean)']+ 1, 6, "0", STR_PAD_LEFT) ;
 }
-
 ?>	
-	
 					<table>
 						<?php include "../../theader.php"; ?>
 						<tbody>

@@ -20,8 +20,9 @@ if(!empty($_POST['changerPass'])) {
 echo '<tr>
 <td align="right"><select name="id">';
 include "../../includes/connexion.php";
-$sql = SELECT."id, pseudo".MEMBRE." ORDER BY pseudo ASC ";
-$req = $bdd->query($sql);
+$sql_changepass = SELECT."id, pseudo".MEMBRE." ORDER BY pseudo ASC ";
+
+$req = $bdd->query($sql_changepass);
 while ($donnees = $req->fetch()) {
 	echo '<option value="'.$donnees["id"].'">'.$donnees["pseudo"].'</option>';
 }
