@@ -30,7 +30,7 @@
 		$loc = $donnees["localisation"];
 		$sql_ad_nomprenom = "SELECT DISTINCT active_directory_lastname, active_directory_firstname from tbl_import_active_directory  WHERE active_directory_uid_number LIKE '$loc' ";
 
-		$req_loc = $bdd2->query($sql_ad_nomprenom);	// On récupère tout le contenu de la table
+		$req_loc = $bdd2->query($sql_ad_nomprenom);
 		$donnees2 = $req_loc->fetch();
 		echo "<tr>";
 			echo "<td class='column1'>".$donnees["ean"]."</td>\n";
@@ -42,10 +42,11 @@
 			echo "<td class='column7'>".$donnees["numfacture"]."</td>\n";
 			echo "<td class='column8'>".$donnees["montant"]."</td>\n";
 		if (isset($_SESSION['id']) ) {
-			echo "<td class='column9'><a href='".BASESITE."admin/ligne-".$donnees["ean"]."'><img src='".BASESITE."images/modif.png' height='35' width='35'></a>";
+			echo "<td class='column9'><a href='".BASESITE."admin/ligne-".$donnees["ean"]."'><img src='".BASESITE."images/modif.png' height='35' width='35'></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             if ($_SESSION['id'] == 2 || $_SESSION['id'] == 3) {
-                echo "<a href='".BASESITE."admin/supligne-".$donnees["ean"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer la ligne ?')\"><img src='".BASESITE."images/corbeille.png' height='35' width='35'></a>";
+				echo "<a href='".BASESITE."admin/supligne-".$donnees["ean"]."' onClick=\"return confirm('Êtes-vous sûr de vouloir supprimer la ligne ?')\"><img src='".BASESITE."images/corbeille.png' height='35' width='35'></a>&nbsp;";
 			}
+			echo "<a href='".BASESITE."admin/upload-".$donnees["numdeserie"]."'><img src='".BASESITE."images/upload.png' height='35' width='35'></a>";
 			echo "</td>";
 		}
 		echo "</tr>";

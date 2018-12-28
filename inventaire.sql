@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `accesfiches`
 --
 
-CREATE TABLE `accesfiches` (
+CREATE TABLE accesfiches` (
   `id` int(11) NOT NULL,
   `id_membre` int(11) NOT NULL,
   `email` int(11) NOT NULL DEFAULT '1',
