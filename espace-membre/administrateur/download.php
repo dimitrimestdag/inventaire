@@ -27,7 +27,7 @@ header('Expires: '.gmdate(DATE_RFC1123, time()+1));
 header('Last-Modified: '.gmdate(DATE_RFC1123, filemtime($full_path)));
  
 readfile($full_path);
-$sql_log_download= "INSERT INTO `log` (`id`, `date`, `commentaire`) VALUES ('".$_SESSION['id']."', NOW(), 'A telechargé facture-".$num."')";
+$sql_log_download= "INSERT INTO `log` (`id`, `date`, `commentaire`) VALUES ('".$_SESSION['id']."', NOW(), 'A telechargé facture-".$num_facture."')";
 $bdd->query($sql_log_download);
 exit; // nécessaire pour être certain de ne pas envoyer de fichier corrompu
 

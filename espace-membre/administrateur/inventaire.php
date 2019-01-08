@@ -14,7 +14,7 @@ include('menu.php');
 						</thead>
 					</table>
 					<div class="row justify-content-center">
-						<div class="col-12 col-md-10 col-lg-8">
+						<div class="col-12 col-md-10 col-lg-8 recherche">
 							<form class="card card-sm" action ="../resultats" method="post">
 								<div class="card-body row no-gutters align-items-center">
 									<div class="col">
@@ -27,4 +27,5 @@ include('menu.php');
 							</form>
 						</div>
 					</div>
+					
 <?php include "../../includes/footer.php"; ?>
