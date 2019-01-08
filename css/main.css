@@ -286,6 +286,12 @@ tbody tr:hover {
   table tbody tr td:nth-child(6):before {
     content: "Numero de serie";
   }
+  table tbody tr td:nth-child(7):before {
+    content: "Num Facture";
+  }
+  table tbody tr td:nth-child(8):before {
+    content: "Montant";
+  }
 
   .column4,
   .column5,

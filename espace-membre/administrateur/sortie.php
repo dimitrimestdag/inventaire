@@ -12,9 +12,11 @@ while ($donnees = $req_nom->fetch()) {
 }
 $req_out = $bdd->query($sql_update_bien_sortie);
     if ($req_out) {
-        echo("La modification à été correctement effectuée") ;
+        echo("La modification à été correctement effectuée </br>") ;
         $sql_log_sortie = "INSERT INTO `log` (`id`, `date`, `commentaire`) VALUES ('".$_SESSION['id']."', NOW(), 'A supprime les biens de ".$nom."')";
         $bdd->query($sql_log_sortie);
+        echo("Redirection dans un instant ...") ;
+        redirection(BASESITE.'admin/info', $time=5);
     } else {
         echo("La modification à échouée") ;
     }    

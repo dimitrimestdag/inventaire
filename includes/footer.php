@@ -25,5 +25,10 @@
 	<script src="<?php echo BASESITE; ?>vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
 	<script src="<?php echo BASESITE; ?>js/main.js"></script>
+	<script>
+		function myFunction() {
+			alert("Vous devez d'abord renseigner un numéro de facture");
+		}
+	</script>
 
 </html>

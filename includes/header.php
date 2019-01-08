@@ -30,7 +30,7 @@ if (isset($_SESSION['id'])) {
 	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASESITE; ?>css/mainlogin.css">
 	<!--===============================================================================================-->
-
+	
 </head>
 	<body>
 	<div class="limiter">

@@ -17,7 +17,7 @@ if (isset($_POST["ean"], $_POST["localisation"], $_POST["famille"], $_POST["marq
     $requete_ajout_bien = $bdd->query($sql_ajout_bien) or die(mysql_error()) ;
     if ($requete_ajout_bien) {
         echo("La modification à été correctement effectuée") ;
-        $sql2_log_ajout= "INSERT INTO `log` (`id`, `date`, `commentaire`) VALUES ('".$_SESSION['id']."', NOW(), 'A ajoute la ligne ".$_POST['edit_ean']."')";
+        $sql2_log_ajout= "INSERT INTO `log` (`id`, `date`, `commentaire`) VALUES ('".$_SESSION['id']."', NOW(), 'A ajoute la ligne ".$_POST['ean']."')";
         $bdd->query($sql_log_ajout);
     } else {
         echo("La modification à échouée") ;

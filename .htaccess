@@ -22,6 +22,7 @@ RewriteRule ^admin/deconnexion$ /inventaire/espace-membre/deconnexion.php [L]
 RewriteRule ^admin/insertion$ /inventaire/espace-membre/administrateur/insertion.php [L]
 RewriteRule ^admin/supligne-([0-9]*)$ /inventaire/espace-membre/administrateur/lignedel.php?ean=$1 [L]
 RewriteRule ^admin/upload-([a-zA-Z0-9\_-]+)$ /inventaire/espace-membre/administrateur/upload.php?num=$1 [L]
+RewriteRule ^admin/download-([a-zA-Z0-9\_-]+)$ /inventaire/espace-membre/administrateur/download.php?num=$1 [L]
 RewriteRule ^admin/sortie-([0-9]*)$ /inventaire/espace-membre/administrateur/sortie.php?loc=$1 [L]
 
 
