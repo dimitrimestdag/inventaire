@@ -10,6 +10,8 @@
 				if ($_SESSION['id'] == 2) {
 					echo "<a href='".BASESITE."admin/changepass'><img src='".BASESITE."images/password.png' class='boutonindex6' title='change Pass' ></a>\n";
 				}
+			}else{
+				echo "<a href='../connexion'><img src='".BASESITE."images/login.png' class='boutonindex' title='Connexion'></a>";
 			}
 			?>
 		</div>

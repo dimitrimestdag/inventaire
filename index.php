@@ -21,7 +21,7 @@
 					</table>
 					<div class="row justify-content-center">
 						<div class="col-12 col-md-10 col-lg-8 recherche">
-							<form class="card card-sm" action ="resultat" method="post">
+							<form class="card card-sm" action ="resultats" method="post">
 								<div class="card-body row no-gutters align-items-center">
 									<div class="col">
 										<input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Rechercher un nom ou autre" name='search'>

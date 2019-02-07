@@ -1,9 +1,4 @@
 <tbody>
-<script>
-function enableSample() {
-document.getElementById('sample').disabled=false;
-}
-</script>
 <?php
     include "../../includes/connexion.php";
     session_start();
@@ -29,7 +24,7 @@ document.getElementById('sample').disabled=false;
         echo "<form action='insertion' method='post' onsubmit='enableSample();'>\n";
         echo "<tr>\n";
         echo "<td class='column1'><input type='text' name='edit_ean' value='".$donnees["ean"]."' readonly='readonly' size='7'/></td>\n";
-        echo "<td class='column2'>";
+        echo "<td class='column2'>\n";
         if ($_SESSION['id'] == 4) {
             while ($donnees3 = $req_loc2->fetch()) {
                 if ($donnees["localisation"] == $donnees3["active_directory_uid_number"]) {
@@ -37,12 +32,12 @@ document.getElementById('sample').disabled=false;
                 }
             }
         } else {
-            echo "<select name='edit_localisation' style='width:150px;'>";
+            echo "<select name='edit_localisation' style='width:150px;'>\n";
             while ($donnees3 = $req_loc2->fetch()) {
                 if ($donnees["localisation"] == $donnees3["active_directory_uid_number"]) {
-                    echo '<option value="'.$donnees["localisation"].'" selected >'.$donnees3["active_directory_lastname"].' '.$donnees3["active_directory_firstname"].'</option>';
+                    echo "<option value='".$donnees3["active_directory_uid_number"]."' selected >".$donnees3["active_directory_lastname"]." ".$donnees3["active_directory_firstname"]."</option>\n";
                 } else {
-                    echo '<option value="'.$donnees["localisation"].'">'.$donnees3["active_directory_lastname"].' '.$donnees3["active_directory_firstname"].'</option>';
+                    echo "<option value='".$donnees3["active_directory_uid_number"]."'>".$donnees3["active_directory_lastname"]." ".$donnees3["active_directory_firstname"]."</option>\n";
                 }
             }
             echo "</select></td>\n";

@@ -38,12 +38,12 @@ include('includes/header.php');
                                     $i++;
                                     $resultat = $bdd->query($sql_search_biensi) or die(print_r($bdd->errorInfo()));
                                     while ($donnees = $resultat->fetch()) {
-                                        $sql_localisation = "SELECT DISTINCT nom, prenom from localisation  WHERE localisation LIKE '". $donnees["localisation"] ."'";
-                                        $req_loc = $bdd->query($sql_localisation);
+                                        $sql_adASC = "SELECT DISTINCT active_directory_lastname, active_directory_firstname, active_directory_uid_number from tbl_import_active_directory ORDER BY active_directory_lastname ASC ";
+                                        $req_loc = $bdd->query($sql_adASC);
                                         $donnees3 = $req_loc->fetch();
                                         echo "<tr>";
                                         echo "<td class='column1'>".$donnees["ean"]."</td>\n";
-                                        echo "<td class='column2'><a href='result.php?search=".$donnees["localisation"]."'>".$donnees["localisation"]."</a> (".$donnees3["prenom"]." ".$donnees3["nom"].")</td>\n";
+                                        echo "<td class='column2'><a href='result.php?search=".$donnees["localisation"]."'>".$donnees["localisation"]."</a> (".$donnees3["active_directory_lastname"]." ".$donnees3["active_directory_firstname"].")</td>\n";
                                         echo "<td class='column3'><a href='result.php?search=".$donnees["famille"]."'>".$donnees["famille"]."</a></td>\n";
                                         echo "<td class='column4'><a href='result.php?search=".$donnees["marque"]."'>".$donnees["marque"]."</a></td>\n";
                                         echo "<td class='column5'><a href='result.php?search=".$donnees["modele"]."'>".$donnees["modele"]."</a></td>\n";
